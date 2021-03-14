@@ -8,21 +8,15 @@ import javax.microedition.khronos.opengles.GL10;
 
 class MainRenderer implements GLSurfaceView.Renderer {
 
-    private boolean mTranslucentBackground;
     private Cube mCube;
     private float mCubeRotation;
 
-    public MainRenderer(boolean useTranslucentBackground) {
-        mTranslucentBackground = useTranslucentBackground;
+    public MainRenderer() {
         mCube = new Cube();
     }
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        if (mTranslucentBackground) {
-            gl.glClearColor(0,0,0,0);
-        } else {
-            gl.glClearColor(1,1,1,1);
-        }
+        gl.glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
 
         gl.glClearDepthf(1.0f);
         gl.glEnable(GL10.GL_DEPTH_TEST);
